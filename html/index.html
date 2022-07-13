@@ -239,6 +239,7 @@
       //prettier-ignore
       portfolioTL.from("#portfolio h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
                  .from("#portfolio p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } })
+                 .from(CSSRulePlugin.getRule("#portfolio .txtBox strong:after"), { cssRule:{scaleX: 0}, ease: "power4"})
                  .from("#portfolio .more", { scale:0, ease: "power4"})
                  .from("#portfolio .portfolioBox li", { opacity:0, x: 100, ease: "power4", stagger: { each: 0.1 } });
 
@@ -246,6 +247,7 @@
       //prettier-ignore
       communityTL.from("#community h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
                  .from("#community p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } })
+                 .from(CSSRulePlugin.getRule("#community .txtBox strong:after"), { cssRule:{scaleX: 0}, ease: "power4"})
                  .from("#community .communityBox li", { opacity:0, x: 100, ease: "power4", stagger: { each: 0.1 } });
 
       $("#main").fullpage({
