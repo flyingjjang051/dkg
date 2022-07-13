@@ -238,6 +238,14 @@
   }
 }
 // fullpage custom
+
+#fp-nav {
+  transition: all 0.5s ease-in-out;
+}
+#fp-nav.fp-right.last {
+  right: -300px;
+}
+
 #fp-nav.fp-right {
   right: 50px;
 }

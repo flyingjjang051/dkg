@@ -250,6 +250,7 @@
         navigation: true,
         navigationTooltips: ["WE WILL MAKE IT HAPPEN", "BUSINESS", "PORTFOLIO", "COMMUNITY"],
         afterLoad: function (origin, destination, direction, trigger) {
+          console.log(direction);
           if (destination.index === 0) {
             mainTL.restart();
           } else {
@@ -265,10 +266,18 @@
           } else {
             portfolioTL.pause(0);
           }
-          if (destination.index === 3) {
+
+          if (destination.index === 3 && direction == "down") {
             communityTL.restart();
+          }
+          if (destination.index < 3) {
+            communityTL.pause(0); //오~~~~~ 종윤이가 알려줌....
+          }
+          console.log(destination);
+          if (destination.isLast) {
+            $("#fp-nav").addClass("last");
           } else {
-            communityTL.pause(0);
+            $("#fp-nav").removeClass("last");
           }
         },
       });
