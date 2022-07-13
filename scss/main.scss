@@ -9,12 +9,14 @@
       margin-bottom: 50px;
       font-size: 2.4rem;
       font-weight: 100;
+      overflow: hidden;
     }
 
     p {
       font-size: 3.6rem;
       line-height: 1.25;
       font-weight: 100;
+      overflow: hidden;
 
       strong {
         font-weight: 500;
@@ -45,8 +47,7 @@
       border: 1px solid #fff;
       overflow: hidden;
       background-color: rgb(0, 149, 207);
-      transition: background-color 0.25s ease, color 0.25s ease,
-        box-shadow 0.25s ease;
+      transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
       @include longShadow(darken(rgb(0, 149, 207), 10), right, 50);
 
       &:hover {
@@ -236,3 +237,93 @@
     }
   }
 }
+// fullpage custom
+#fp-nav.fp-right {
+  right: 50px;
+}
+#fp-nav ul li {
+  width: 14px;
+  height: 14px;
+  margin: 30px 0;
+}
+#fp-nav ul li a {
+}
+#fp-nav ul li a.active span,
+#fp-nav ul li:hover a.active span {
+  height: 4px;
+  width: 4px;
+  margin: -2px;
+}
+#fp-nav ul li a span {
+  height: 4px;
+  width: 4px;
+  border: 0;
+  background: #fff;
+  margin: -2px;
+  transition: all 0.1s ease-in-out;
+}
+#fp-nav ul li a:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  border: 2px solid #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  margin: -15px;
+  transform: scale(0);
+  transition: all 0.1s ease-in-out;
+}
+#fp-nav ul li a.active:after {
+  transform: scale(1);
+}
+
+#fp-nav ul li a:before {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 30px;
+  //background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#fp-nav ul li:hover a span {
+  width: 4px;
+  height: 4px;
+  margin: -2px;
+}
+#fp-nav ul li .fp-tooltip {
+  position: absolute;
+  top: -2px;
+  color: #fff;
+  font-size: 16px;
+  font-family: inherit;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: visible;
+  display: block;
+  opacity: 0.5;
+  width: auto;
+  text-transform: uppercase;
+  cursor: pointer;
+  &.fp-right {
+    right: 40px;
+  }
+}
+#fp-nav.disable ul li .fp-tooltip {
+  display: none !important;
+}
+
+#fp-nav ul li:nth-last-child(1) {
+  display: none;
+}
+// #fp-nav ul li:last-child {
+//   display: none;
+// }
+

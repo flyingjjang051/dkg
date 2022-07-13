@@ -18,10 +18,8 @@
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/splitting.css" />
     <link rel="stylesheet" href="../css/fullpage.css" />
-    <!-- <link rel="stylesheet" href="../css/fullpageCustom.css" /> -->
     <link rel="stylesheet" href="../css/layout.css" />
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/fullpageCustom.css" />
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/greensock/gsap.min.js"></script>
     <script src="../js/greensock/CSSRulePlugin.min.js"></script>
@@ -222,6 +220,57 @@
       });
       $("#gnb .list > li").on("mouseleave", function () {
         $("#header").removeClass("on");
+      });
+
+      const mainTL = gsap.timeline();
+      //prettier-ignore
+      mainTL.from("#mainVisual h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
+            .from("#mainVisual p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } });
+
+      const businessTL = gsap.timeline({ paused: true });
+      //prettier-ignore
+      businessTL.from("#business h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
+                .from("#business p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } })
+                .from("#business .iconBox li", { opacity:0, x: 100, ease: "power4", stagger: { each: 0.1 } });
+
+      const portfolioTL = gsap.timeline({ paused: true });
+      //prettier-ignore
+      portfolioTL.from("#portfolio h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
+                 .from("#portfolio p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } })
+                 .from("#portfolio .more", { scale:0, ease: "power4"})
+                 .from("#portfolio .portfolioBox li", { opacity:0, x: 100, ease: "power4", stagger: { each: 0.1 } });
+
+      const communityTL = gsap.timeline({ paused: true });
+      //prettier-ignore
+      communityTL.from("#community h2 .char", { y: 100, ease: "power4", stagger: { each: 0.05 } })
+                 .from("#community p .char", { y: 100, ease: "power4", stagger: { each: 0.02 } })
+                 .from("#community .communityBox li", { opacity:0, x: 100, ease: "power4", stagger: { each: 0.1 } });
+
+      $("#main").fullpage({
+        navigation: true,
+        navigationTooltips: ["WE WILL MAKE IT HAPPEN", "BUSINESS", "PORTFOLIO", "COMMUNITY"],
+        afterLoad: function (origin, destination, direction, trigger) {
+          if (destination.index === 0) {
+            mainTL.restart();
+          } else {
+            mainTL.pause(0);
+          }
+          if (destination.index === 1) {
+            businessTL.restart();
+          } else {
+            businessTL.pause(0);
+          }
+          if (destination.index === 2) {
+            portfolioTL.restart();
+          } else {
+            portfolioTL.pause(0);
+          }
+          if (destination.index === 3) {
+            communityTL.restart();
+          } else {
+            communityTL.pause(0);
+          }
+        },
       });
     </script>
   </body>
